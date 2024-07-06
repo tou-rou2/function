@@ -1,10 +1,10 @@
-def S(t_n:int, h_f:function)->function:#h_fは1変数関数
-    def g(l_l:list[int])->int:
+def S(t_n: int, h_f: function) -> function:  # h_fは1変数関数
+    def g(l_l: list[int]) -> int:
         if len(l_l) == 1 or all([i == 1 for i in l_l[:-1]]):
             return h_f(l_l[-1])
         else:
             if l_l[-2] == 1:
-                i:int = -2
+                i: int = -2
                 while l_l[i] != 1:
                     i -= 1
                 l_l[i] -= 1
@@ -22,25 +22,25 @@ def S(t_n:int, h_f:function)->function:#h_fは1変数関数
                 elif t_n > 1:
                     l_l[-2] -= 1
 
-                    def g2(x_n:int)->int:#h_fに代入用
+                    def g2(x_n: int) -> int:  # h_fに代入用
                         l_l[-1] = x_n
                         return g(l_l)
 
-                    G_f:function = S(t_n - 1, g2)
+                    G_f: function = S(t_n - 1, g2)
                     return G_f(l_l[-1])
 
-    def gx(x_n:int)->int:
+    def gx(x_n: int) -> int:
         return g([x_n] * x_n)
 
     return gx
 
 
-def f(t_n:int, l_l:list[int])->int:
+def f(t_n: int, l_l: list[int]) -> int:
     if len(l_l) == 1 or all([i == 1 for i in l_l[:-1]]):
         return l_l[-1] + 1
     else:
         if l_l[-2] == 1:
-            i:int = -2
+            i: int = -2
             while l_l[i] != 1:
                 i -= 1
             l_l[i] -= 1
@@ -52,9 +52,9 @@ def f(t_n:int, l_l:list[int])->int:
         elif l_l[-2] > 1:
             l_l[-2] -= 1
 
-            def f2(x_n:int)->int:#h_fに代入用
+            def f2(x_n: int) -> int:  # h_fに代入用
                 l_l[-1] = x_n
                 return f(t_n, l_l)
 
-            F_f:function = S(t_n, f2)
+            F_f: function = S(t_n, f2)
             return F_f(l_l[-1])
