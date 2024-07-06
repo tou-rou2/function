@@ -1,4 +1,4 @@
-def S(t_n, h_f):
+def S(t_n, h_f):#h_fは1変数関数
     def g(l_l):
         if len(l_l) == 1 or all([i == 1 for i in l_l[:-1]]):
             return h_f(l_l[-1])
@@ -22,7 +22,7 @@ def S(t_n, h_f):
                 elif t_n > 1:
                     l_l[-2] -= 1
 
-                    def g2(x_n):
+                    def g2(x_n):#h_fに代入用
                         l_l[-1] = x_n
                         return g(l_l)
 
@@ -52,7 +52,7 @@ def f(t_n, l_l):
         elif l_l[-2] > 1:
             l_l[-2] -= 1
 
-            def f2(x_n):
+            def f2(x_n):#h_fに代入用
                 l_l[-1] = x_n
                 return f(t_n, l_l)
 
