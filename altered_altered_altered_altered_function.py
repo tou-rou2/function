@@ -20,9 +20,14 @@ def S(t_n, h_f):
                     l_l[-2] = 1
                     return g(l_l)
                 elif t_n > 1:
-                    G_f = S(t_n - 1, g)
                     l_l[-2] -= 1
-                    return G_f([l_l])
+
+                    def g2(x_n):
+                        l_l[-1] = x_n
+                        return g(l_l)
+
+                    G_f = S(t_n - 1, g2)
+                    return G_f(l_l[-1])
 
     def g2(x_n):
         return g([x_n] * x_n)
@@ -46,8 +51,10 @@ def f(t_n, l_l):
             return f(t_n, l_l)
         elif l_l[-2] > 1:
             l_l[-2] -= 1
+
             def f2(x_n):
                 l_l[-1] = x_n
-                return f(t_n,l_l)
+                return f(t_n, l_l)
+
             F_f = S(t_n, f2)
             return F_f(l_l[-1])
