@@ -29,10 +29,10 @@ def S(t_n, h_f):
                     G_f = S(t_n - 1, g2)
                     return G_f(l_l[-1])
 
-    def g2(x_n):
+    def gx(x_n):
         return g([x_n] * x_n)
 
-    return g2
+    return gx
 
 
 def f(t_n, l_l):
